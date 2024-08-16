@@ -24,7 +24,9 @@ import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.geometry.Twist2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -243,6 +245,15 @@ public class Drive extends SubsystemBase {
   @AutoLogOutput(key = "Odometry/Robot3d")
   public Pose3d getPose3d() {
     return new Pose3d(poseEstimator.getEstimatedPosition());
+  }
+
+  // Pivot pose supplier for note visualizer. Works on 2024 kitbot
+  @AutoLogOutput(key = "Odometry/Pivot")
+  public Pose3d getPivotPose() {
+    return new Pose3d(
+        new Translation3d(getPose().getX(), getPose().getY(), 0.3), 
+        new Rotation3d(0, -1, getPose().getRotation().getRadians())
+    );
   }
 
   /** Returns the current odometry rotation. */

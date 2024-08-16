@@ -31,6 +31,7 @@ import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.flywheel.Flywheel;
 import frc.robot.subsystems.flywheel.FlywheelIO;
 import frc.robot.subsystems.flywheel.FlywheelIOSim;
+import frc.robot.util.NoteVisualizer;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 import org.littletonrobotics.junction.networktables.LoggedDashboardNumber;
 
@@ -111,6 +112,7 @@ public class RobotContainer {
     autoChooser.addOption(
         "Flywheel SysId (Dynamic Reverse)", flywheel.sysIdDynamic(SysIdRoutine.Direction.kReverse));
 
+    NoteVisualizer.setPivotPoseSupplier(() -> drive.getPivotPose());
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -143,6 +145,8 @@ public class RobotContainer {
         .whileTrue(
             Commands.startEnd(
                 () -> flywheel.runVelocity(flywheelSpeedInput.get()), flywheel::stop, flywheel));
+
+    controller.rightBumper().onTrue(NoteVisualizer.shoot());
   }
 
   /**
