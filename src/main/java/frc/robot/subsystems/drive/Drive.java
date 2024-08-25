@@ -251,9 +251,8 @@ public class Drive extends SubsystemBase {
   @AutoLogOutput(key = "Odometry/Pivot")
   public Pose3d getPivotPose() {
     return new Pose3d(
-        new Translation3d(getPose().getX(), getPose().getY(), 0.3), 
-        new Rotation3d(0, -1, getPose().getRotation().getRadians())
-    );
+        new Translation3d(getPose().getX(), getPose().getY(), 0.3),
+        new Rotation3d(0, -1, getPose().getRotation().getRadians()));
   }
 
   /** Returns the current odometry rotation. */
