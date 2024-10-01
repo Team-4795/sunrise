@@ -1,0 +1,9 @@
+{
+    "name": "Sunrise",
+    "sourceUrl": "", 
+    "rotations": {}, 
+    "_comment" : "pass in rotations based on axis",
+    "position": [], 
+    "_comment" : "offset in meters you"
+
+}
