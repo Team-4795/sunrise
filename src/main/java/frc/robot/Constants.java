@@ -28,6 +28,7 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final Mode currentMode = Mode.SIM;
+  public static final double DT = 0.02;
 
   public static final class FieldConstants {
     public static final double speakerHeight = 2; // meters
